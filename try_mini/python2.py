@@ -67,3 +67,6 @@ def summary(file):
 
     # print(len(article_text))
     # print(len(summary))
+
+
+summary('demo2.txt')
