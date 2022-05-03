@@ -39,6 +39,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.plainTextEdit = QtWidgets.QPlainTextEdit(self.centralwidget)
         self.plainTextEdit.setGeometry(QtCore.QRect(480, 60, 321, 201))
         self.plainTextEdit.setObjectName("plainTextEdit")
+        self.plainTextEdit.setPlaceholderText("Enter your text here ...")
         self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_2.setGeometry(QtCore.QRect(330, 210, 89, 25))
         self.pushButton_2.setObjectName("pushButton_2")
@@ -65,6 +66,14 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
 
         self.actionOpen.triggered.connect(self.openFile)
         self.open_pdf.clicked.connect(self.openFile)
+
+        self.pushButton_2.clicked.connect(self.convertText)
+
+
+
+    def convertText(self):
+        txt = self.plainTextEdit.toPlainText()
+        python2.summaryText(txt)
 
     def openFile(self):
         filename, _ = QtWidgets.QFileDialog.getOpenFileName(
