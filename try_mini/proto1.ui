@@ -46,7 +46,7 @@
       <x>320</x>
       <y>50</y>
       <width>141</width>
-      <height>61</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
@@ -66,24 +66,11 @@
      <string>Output</string>
     </property>
    </widget>
-   <widget class="QLabel" name="outputlabel">
+   <widget class="QPushButton" name="exportPDFbutton">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>350</y>
-      <width>291</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>590</x>
-      <y>390</y>
+      <x>580</x>
+      <y>400</y>
       <width>101</width>
       <height>41</height>
      </rect>
@@ -92,17 +79,7 @@
      <string>Export as pdf</string>
     </property>
    </widget>
-   <widget class="QPlainTextEdit" name="plainTextEdit">
-    <property name="geometry">
-     <rect>
-      <x>480</x>
-      <y>60</y>
-      <width>321</width>
-      <height>201</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="convertButton">
     <property name="geometry">
      <rect>
       <x>330</x>
@@ -113,6 +90,26 @@
     </property>
     <property name="text">
      <string>Convert</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="outputTextField">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>320</y>
+      <width>351</width>
+      <height>211</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="inputTextField">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>50</y>
+      <width>321</width>
+      <height>241</height>
+     </rect>
     </property>
    </widget>
   </widget>

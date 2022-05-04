@@ -92,6 +92,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
                 python2.summary(text)
             elif filename.endswith('.txt'):
                 python2.summary(filename)
+
             # try:
             #     with open(filename, 'r') as fh:
             #         pdf2.pdf_to_txt(fh)
