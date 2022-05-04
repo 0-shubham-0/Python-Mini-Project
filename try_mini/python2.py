@@ -51,6 +51,8 @@ def summaryText(text):
 
     print(summary)
 
+    return summary
+
     # print(len(article_text))
     # print(len(summary))
 
@@ -115,6 +117,7 @@ def summary(file):
 
     print(summary)
 
+    return summary
     # print(len(article_text))
     # print(len(summary))
 
