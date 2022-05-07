@@ -11,6 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from try_mini import pdf2, python1, python2
 import aspose as aw
+from fpdf import FPDF
 
 
 class Ui_MainWindow(QtWidgets.QMainWindow):
@@ -78,18 +79,10 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
     # def storeSummary(self):
     #     self.outputTextField = python2.su
 
-
     def convertText(self):
         txt = self.inputTextField.toPlainText()
         self.ouputText = python2.summaryText(txt)
         self.outputTextField.setText(self.ouputText)
-
-    def export_to_pdf(self):
-
-        # doc = aw.Document("document.txt")
-        doc = self.ouputText
-        # save TXT as PDF file
-        doc.save("txt-to-pdf.pdf", aw.SaveFormat.PDF)
 
     def openFile(self):
         filename, _ = QtWidgets.QFileDialog.getOpenFileName(
@@ -113,7 +106,6 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
             else:
                 self.outputTextField.setText("Invalid file type")
 
-
             # try:
             #     with open(filename, 'r') as fh:
             #         pdf2.pdf_to_txt(fh)
@@ -122,6 +114,20 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
             #     # qtw.QMessageBox.critical(f"Could not load file: {e}")
             #     # It should read like this:
             #     QtWidgets.QMessageBox.critical(self, f"Could not load file: {e}")
+
+    def export_to_pdf(self):
+        pdf = FPDF()
+        pdf.add_page()
+        pdf.set_font("Arial", size=14)
+        # add another cell
+        pdf.multi_cell(w=0, txt=self.ouputText, border=0,
+                       align='L', max_line_height=pdf.font_size, fill=False)
+        # save the pdf with name .pdf
+        pdf.output("GFG.pdf")
+        # # doc = aw.Document("document.txt")
+        # doc = self.ouputText
+        # # save TXT as PDF file
+        # doc.save("txt-to-pdf.pdf", aw..PDF)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -143,6 +149,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
