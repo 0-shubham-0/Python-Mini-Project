@@ -3,6 +3,7 @@ import re
 import nltk
 import heapq
 
+
 def summaryText(text):
     article_text = text
 
@@ -56,8 +57,9 @@ def summaryText(text):
     # print(len(article_text))
     # print(len(summary))
 
+
 def summary(file):
-# scraped_data = urllib.request.urlopen('https://en.wikipedia.org/wiki/Machine_learning')
+    # scraped_data = urllib.request.urlopen('https://en.wikipedia.org/wiki/Machine_learning')
     scraped_data = open(file, 'r')
     article = scraped_data.read()
 
@@ -95,7 +97,6 @@ def summary(file):
                 word_frequencies[word] += 1
         maximum_frequncy = max(word_frequencies.values())
     # print(word_frequencies)
-
 
     for word in word_frequencies.keys():
         word_frequencies[word] = (word_frequencies[word] / maximum_frequncy)

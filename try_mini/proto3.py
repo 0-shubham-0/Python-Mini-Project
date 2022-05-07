@@ -117,6 +117,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
 
     def export_to_pdf(self):
         pdf = FPDF()
+        pdf.set_auto_page_break(auto=True, margin=15)
         pdf.add_page()
         pdf.set_font("Arial", size=14)
         # add another cell
