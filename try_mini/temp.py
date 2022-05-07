@@ -9,9 +9,11 @@
 
 
 from PyQt5 import QtCore, QtWidgets
+from PyQt5.QtWidgets import QTextEdit
 from PyQt5.QtPrintSupport import QPrinter, QPrintDialog, QPrintPreviewDialog
 import pdf2
 import python2
+import aspose.words as aw
 
 
 class Ui_MainWindow(QtWidgets.QMainWindow):
@@ -63,6 +65,8 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.menuFile.addAction(self.actionOpen)
         self.menuFile.addAction(self.actionSave_Export)
         self.menubar.addAction(self.menuFile.menuAction())
+        self.textEdit = QTextEdit(self)
+
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -71,8 +75,6 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.open_pdf.clicked.connect(self.openFile)
 
         self.pushButton_2.clicked.connect(self.convertText)
-
-
 
     def convertText(self):
         txt = self.plainTextEdit.toPlainText()
@@ -105,8 +107,21 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
             #     # It should read like this:
             #     QtWidgets.QMessageBox.critical(self, f"Could not load file: {e}")
 
+    # def printPreviewDialog(self):
+    #     printer = QPrinter(QPrinter.HighResolution)
+    #     previewDialog = QPrintPreviewDialog(printer, self)
+    #     previewDialog.paintRequested.connect(self.printPreview)
+    #     previewDialog.exec_()
+    #
+    # def printPreview(self, printer):
+    #     self.textEdit.print_(printer)
 
+    # load TXT document
+    def export_to_pdf(self):
+        doc = aw.Document("document.txt")
 
+        # save TXT as PDF file
+        doc.save("txt-to-pdf.pdf", aw.SaveFormat.PDF)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -128,6 +143,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
