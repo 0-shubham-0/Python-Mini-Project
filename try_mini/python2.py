@@ -4,7 +4,8 @@ import nltk
 import heapq
 
 
-def summaryText(text):
+def summaryText(text, length_percent):
+    length = int(length_percent[:-1])
     article_text = text
 
     # Removing Square Brackets and Extra Spaces
@@ -48,8 +49,13 @@ def summaryText(text):
                     else:
                         sentence_scores[sent] += word_frequencies[word]
     print(sentence_scores)
-
-    summary_sentences = heapq.nlargest(7, sentence_scores, key=sentence_scores.get)
+    if length == 30:
+        length = int(len(sentence_list)/3)
+    elif length == 70:
+        length = int(len(sentence_list)*2/3)
+    else:
+        length = int(len(sentence_list) / 2)
+    summary_sentences = heapq.nlargest(length, sentence_scores, key=sentence_scores.get)
     # print(summary_sentences)
     summary = ' '.join(summary_sentences)
 

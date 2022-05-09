@@ -9,11 +9,10 @@ from fpdf import FPDF
 class Ui_MainWindow(QtWidgets.QMainWindow):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(817, 620)
+        MainWindow.resize(817, 590)
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(False)
-        font.setWeight(50)
         MainWindow.setFont(font)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -26,11 +25,11 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.open_pdf.setAutoDefault(False)
         self.open_pdf.setDefault(False)
         self.open_pdf.setObjectName("open_pdf")
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(420, 120, 31, 21))
-        self.label.setStyleSheet("color: rgb(95,70,200);\n"
-                                 "font: 9pt \"Poppins\";")
-        self.label.setObjectName("label")
+        self.orLabel = QtWidgets.QLabel(self.centralwidget)
+        self.orLabel.setGeometry(QtCore.QRect(420, 120, 21, 21))
+        self.orLabel.setStyleSheet("color: rgb(95,70,200);\n"
+                                   "font: 9pt \"Poppins\";")
+        self.orLabel.setObjectName("orLabel")
         self.exportPDFbutton = QtWidgets.QPushButton(self.centralwidget)
         self.exportPDFbutton.setGeometry(QtCore.QRect(370, 510, 111, 31))
         self.exportPDFbutton.setStyleSheet("background-color: rgb(170, 170, 255);\n"
@@ -54,30 +53,28 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.outputTextField = QtWidgets.QTextEdit(self.centralwidget)
         self.outputTextField.setGeometry(QtCore.QRect(160, 310, 531, 141))
         self.outputTextField.setObjectName("outputTextField")
-        self.label_4 = QtWidgets.QLabel(self.centralwidget)
-        self.label_4.setGeometry(QtCore.QRect(230, 350, 49, 16))
-        self.label_4.setText("")
-        self.label_4.setObjectName("label_4")
         self.summaryLength = QtWidgets.QComboBox(self.centralwidget)
-        self.summaryLength.setGeometry(QtCore.QRect(360, 210, 131, 22))
+        self.summaryLength.setGeometry(QtCore.QRect(440, 210, 131, 22))
         self.summaryLength.setStyleSheet("font: 300 8pt \"Poppins\";\n"
                                          "border-radius: 5px;")
         self.summaryLength.setObjectName("summaryLength")
         self.summaryLength.addItem("")
         self.summaryLength.addItem("")
         self.summaryLength.addItem("")
-        self.summaryLength.addItem("")
         self.fontType = QtWidgets.QFontComboBox(self.centralwidget)
-        self.fontType.setGeometry(QtCore.QRect(240, 470, 131, 22))
+        self.fontType.setGeometry(QtCore.QRect(290, 470, 121, 21))
+        font = QtGui.QFont()
+        font.setPointSize(8)
+        font.setBold(False)
+        self.fontType.setFont(font)
         self.fontType.setStyleSheet("\n"
                                     "border-radius: 5px;")
         self.fontType.setObjectName("fontType")
         self.fontSize = QtWidgets.QComboBox(self.centralwidget)
-        self.fontSize.setGeometry(QtCore.QRect(480, 470, 131, 22))
+        self.fontSize.setGeometry(QtCore.QRect(530, 470, 131, 22))
         self.fontSize.setStyleSheet("font: 300 8pt \"Poppins\";\n"
                                     "border-radius: 5px;")
         self.fontSize.setObjectName("fontSize")
-        self.fontSize.addItem("")
         self.fontSize.addItem("")
         self.fontSize.addItem("")
         self.fontSize.addItem("")
@@ -87,15 +84,35 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         font = QtGui.QFont()
         font.setPointSize(14)
         font.setBold(True)
-        font.setWeight(75)
         self.errorLabel.setFont(font)
         self.errorLabel.setStyleSheet("color: rgb(224, 27, 36);")
         self.errorLabel.setText("")
         self.errorLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.errorLabel.setObjectName("errorLabel")
+        self.lengthLabel = QtWidgets.QLabel(self.centralwidget)
+        self.lengthLabel.setGeometry(QtCore.QRect(288, 210, 101, 20))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(False)
+        self.lengthLabel.setFont(font)
+        self.lengthLabel.setObjectName("lengthLabel")
+        self.fontTypeLabel = QtWidgets.QLabel(self.centralwidget)
+        self.fontTypeLabel.setGeometry(QtCore.QRect(188, 470, 71, 16))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(False)
+        self.fontTypeLabel.setFont(font)
+        self.fontTypeLabel.setObjectName("fontTypeLabel")
+        self.FontSizeLabel = QtWidgets.QLabel(self.centralwidget)
+        self.FontSizeLabel.setGeometry(QtCore.QRect(458, 470, 51, 20))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(False)
+        self.FontSizeLabel.setFont(font)
+        self.FontSizeLabel.setObjectName("FontSizeLabel")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 817, 22))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 817, 26))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -126,7 +143,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
             self.errorLabel.setText("Input Text is empty !")
         else:
             txt = self.inputTextField.toPlainText()
-            self.ouputText = python2.summaryText(txt)
+            self.ouputText = python2.summaryText(txt, self.summaryLength.currentText())
             self.outputTextField.setText(self.ouputText)
 
     def openFile(self):
@@ -151,15 +168,6 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
             else:
                 self.outputTextField.setText("Invalid file type")
 
-            # try:
-            #     with open(filename, 'r') as fh:
-            #         pdf2.pdf_to_txt(fh)
-            # except Exception as e:
-            #     # Errata:  Book contains the following line:
-            #     # qtw.QMessageBox.critical(f"Could not load file: {e}")
-            #     # It should read like this:
-            #     QtWidgets.QMessageBox.critical(self, f"Could not load file: {e}")
-
     def export_to_pdf(self):
         pdf = FPDF()
         pdf.set_auto_page_break(auto=True, margin=15)
@@ -170,10 +178,6 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
                        align='L', max_line_height=pdf.font_size, fill=False)
         # save the pdf with name .pdf
         pdf.output("GFG.pdf")
-        # # doc = aw.Document("document.txt")
-        # doc = self.ouputText
-        # # save TXT as PDF file
-        # doc.save("txt-to-pdf.pdf", aw..PDF)
 
     def pdfExport(self):
         if self.outputTextField.toPlainText() == '' or self.fontSize.currentText() == "Font Size":
@@ -198,22 +202,24 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
                 printer.setOutputFileName(fn)
                 self.outputTextField.document().print_(printer)
 
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.open_pdf.setText(_translate("MainWindow", "Select PDF"))
-        self.label.setText(_translate("MainWindow", "OR"))
+        self.orLabel.setText(_translate("MainWindow", "OR"))
         self.exportPDFbutton.setText(_translate("MainWindow", "Export PDF"))
         self.convertButton.setText(_translate("MainWindow", "CONVERT"))
-        self.summaryLength.setItemText(0, _translate("MainWindow", "Summarise"))
-        self.summaryLength.setItemText(1, _translate("MainWindow", "20%"))
-        self.summaryLength.setItemText(2, _translate("MainWindow", "50%"))
-        self.summaryLength.setItemText(3, _translate("MainWindow", "70%"))
-        self.fontSize.setItemText(0, _translate("MainWindow", "Font Size"))
-        self.fontSize.setItemText(1, _translate("MainWindow", "10"))
-        self.fontSize.setItemText(2, _translate("MainWindow", "12"))
-        self.fontSize.setItemText(3, _translate("MainWindow", "14"))
-        self.fontSize.setItemText(4, _translate("MainWindow", "16"))
+        self.summaryLength.setItemText(0, _translate("MainWindow", "20%"))
+        self.summaryLength.setItemText(1, _translate("MainWindow", "50%"))
+        self.summaryLength.setItemText(2, _translate("MainWindow", "70%"))
+        self.fontSize.setItemText(0, _translate("MainWindow", "10"))
+        self.fontSize.setItemText(1, _translate("MainWindow", "12"))
+        self.fontSize.setItemText(2, _translate("MainWindow", "14"))
+        self.fontSize.setItemText(3, _translate("MainWindow", "16"))
+        self.lengthLabel.setText(_translate("MainWindow", "Summary Length"))
+        self.fontTypeLabel.setText(_translate("MainWindow", "Font Type"))
+        self.FontSizeLabel.setText(_translate("MainWindow", "Font Size"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.actionOpen.setText(_translate("MainWindow", "Open"))
         self.actionOpen.setStatusTip(_translate("MainWindow", "open a pdf file or text file"))
