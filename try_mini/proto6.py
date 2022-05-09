@@ -3,13 +3,12 @@ from PyQt5.QtPrintSupport import QPrinter
 from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtCore import QFileInfo
 from try_mini import pdf2, python2
-from fpdf import FPDF
 
 
 class Ui_MainWindow(QtWidgets.QMainWindow):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(817, 590)
+        MainWindow.resize(817, 610)
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(False)
@@ -90,21 +89,21 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.errorLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.errorLabel.setObjectName("errorLabel")
         self.lengthLabel = QtWidgets.QLabel(self.centralwidget)
-        self.lengthLabel.setGeometry(QtCore.QRect(288, 210, 101, 20))
+        self.lengthLabel.setGeometry(QtCore.QRect(288, 210, 135, 20))
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setBold(False)
         self.lengthLabel.setFont(font)
         self.lengthLabel.setObjectName("lengthLabel")
         self.fontTypeLabel = QtWidgets.QLabel(self.centralwidget)
-        self.fontTypeLabel.setGeometry(QtCore.QRect(188, 470, 71, 16))
+        self.fontTypeLabel.setGeometry(QtCore.QRect(188, 470, 90, 16))
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setBold(False)
         self.fontTypeLabel.setFont(font)
         self.fontTypeLabel.setObjectName("fontTypeLabel")
         self.FontSizeLabel = QtWidgets.QLabel(self.centralwidget)
-        self.FontSizeLabel.setGeometry(QtCore.QRect(458, 470, 51, 20))
+        self.FontSizeLabel.setGeometry(QtCore.QRect(458, 470, 70, 20))
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setBold(False)
@@ -132,19 +131,12 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
         self.actionOpen.triggered.connect(self.openFile)
+        self.actionSave_Export.triggered.connect(self.pdfExport)
         self.open_pdf.clicked.connect(self.openFile)
 
         self.convertButton.clicked.connect(self.convertText)
 
         self.exportPDFbutton.clicked.connect(self.pdfExport)
-
-    def convertText(self):
-        if self.inputTextField.toPlainText() == '':
-            self.errorLabel.setText("Input Text is empty !")
-        else:
-            txt = self.inputTextField.toPlainText()
-            self.ouputText = python2.summaryText(txt, self.summaryLength.currentText())
-            self.outputTextField.setText(self.ouputText)
 
     def openFile(self):
         filename, _ = QtWidgets.QFileDialog.getOpenFileName(
@@ -160,31 +152,26 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
             print(filename)
             if filename.endswith('.pdf'):
                 text = pdf2.pdf_to_txt(filename)
-                python2.summaryText(text)
-                self.outputTextField.setText(python2.summaryText(text))
+                self.inputTextField.setText(text)
             elif filename.endswith('.txt'):
-                python2.summary(filename)
-                self.outputTextField.setText(python2.summary(filename))
+                scraped_data = open(filename, 'r')
+                article = scraped_data.read()
+                self.inputTextField.setText(article)
             else:
                 self.outputTextField.setText("Invalid file type")
 
-    def export_to_pdf(self):
-        pdf = FPDF()
-        pdf.set_auto_page_break(auto=True, margin=15)
-        pdf.add_page()
-        pdf.set_font("Arial", size=14)
-        # add another cell
-        pdf.multi_cell(w=0, txt=self.ouputText, border=0,
-                       align='L', max_line_height=pdf.font_size, fill=False)
-        # save the pdf with name .pdf
-        pdf.output("GFG.pdf")
+    def convertText(self):
+        if self.inputTextField.toPlainText() == '':
+            self.errorLabel.setText("Input Text is empty !")
+        else:
+            txt = self.inputTextField.toPlainText()
+            self.ouputText = python2.summaryText(txt, self.summaryLength.currentText())
+            self.outputTextField.setText(self.ouputText)
+
 
     def pdfExport(self):
-        if self.outputTextField.toPlainText() == '' or self.fontSize.currentText() == "Font Size":
-            if self.fontSize.currentText() == "Font Size":
-                self.errorLabel.setText("Please select Font Size")
-            else:
-                self.errorLabel.setText("Summary not generated !")
+        if self.outputTextField.toPlainText() == '':
+            self.errorLabel.setText("Summary not generated !")
         else:
             fn, _ = QFileDialog.getSaveFileName(self, "Export PDF", None, "PDF files (.pdf);;All Files()")
 
@@ -210,7 +197,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.orLabel.setText(_translate("MainWindow", "OR"))
         self.exportPDFbutton.setText(_translate("MainWindow", "Export PDF"))
         self.convertButton.setText(_translate("MainWindow", "CONVERT"))
-        self.summaryLength.setItemText(0, _translate("MainWindow", "20%"))
+        self.summaryLength.setItemText(0, _translate("MainWindow", "30%"))
         self.summaryLength.setItemText(1, _translate("MainWindow", "50%"))
         self.summaryLength.setItemText(2, _translate("MainWindow", "70%"))
         self.fontSize.setItemText(0, _translate("MainWindow", "10"))
