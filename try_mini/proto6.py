@@ -7,7 +7,7 @@ from try_mini import pdf2, python2
 
 class Ui_MainWindow(QtWidgets.QMainWindow):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
+        MainWindow.setObjectName("Summarizer")
         MainWindow.resize(817, 610)
         font = QtGui.QFont()
         font.setPointSize(11)
@@ -175,7 +175,6 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
             self.ouputText = python2.summaryText(txt, self.summaryLength.currentText())
             self.outputTextField.setText(self.ouputText)
 
-
     def pdfExport(self):
         if self.outputTextField.toPlainText() == '':
             self.errorLabel.setText("Summary not generated !")
@@ -195,7 +194,6 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
                 printer.setOutputFormat(QPrinter.PdfFormat)
                 printer.setOutputFileName(fn)
                 self.outputTextField.document().print_(printer)
-
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
