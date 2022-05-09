@@ -49,9 +49,13 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.inputTextField.setAutoFillBackground(False)
         self.inputTextField.setStyleSheet("")
         self.inputTextField.setObjectName("inputTextField")
+        self.inputTextField.setPlaceholderText("Enter text here ...")
+        self.inputTextField.setAcceptRichText(False)
         self.outputTextField = QtWidgets.QTextEdit(self.centralwidget)
         self.outputTextField.setGeometry(QtCore.QRect(160, 310, 531, 141))
         self.outputTextField.setObjectName("outputTextField")
+        self.outputTextField.setPlaceholderText("Output will be displayed here ...")
+        self.outputTextField.setReadOnly(True)
         self.summaryLength = QtWidgets.QComboBox(self.centralwidget)
         self.summaryLength.setGeometry(QtCore.QRect(440, 210, 131, 22))
         self.summaryLength.setStyleSheet("font: 300 8pt \"Poppins\";\n"
