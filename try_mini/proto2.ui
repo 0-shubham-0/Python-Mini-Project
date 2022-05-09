@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>817</width>
+    <height>590</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="open_pdf">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>60</y>
+      <width>181</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background: rgb(170, 170, 255);
+font: 9pt &quot;Poppins&quot;;
+color: white;
+border-radius:10px;</string>
+    </property>
+    <property name="text">
+     <string>Select PDF</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>120</y>
+      <width>31</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(95,70,200);
+font: 9pt &quot;Poppins&quot;;</string>
+    </property>
+    <property name="text">
+     <string>OR</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="exportPDFbutton">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>510</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(170, 170, 255);
+font: 9pt &quot;Poppins&quot;;
+color: white;
+border-radius:10px;</string>
+    </property>
+    <property name="text">
+     <string>Export PDF</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="convertButton">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>250</y>
+      <width>251</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(95,70,200);
+font: 9pt &quot;Poppins&quot;;
+color: white;
+border-radius:10px;</string>
+    </property>
+    <property name="text">
+     <string>CONVERT</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="outputTextField">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>60</y>
+      <width>211</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+border-radius: 100px;</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="inputTextField">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>310</y>
+      <width>531</width>
+      <height>141</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>350</y>
+      <width>49</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>320</y>
+      <width>49</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 300 8pt &quot;Poppins&quot;;
+</string>
+    </property>
+    <property name="text">
+     <string>Result</string>
+    </property>
+   </widget>
+   <widget class="QScrollBar" name="verticalScrollBar">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>70</y>
+      <width>20</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">/* VERTICAL SCROLLBAR */
+ QScrollBar:vertical {
+	border: none;
+    background:rgb(225, 235, 255);
+    width: 14px;
+    margin: 15px 0 15px 0;
+	border-radius: 0px;
+ }
+
+/*  HANDLE BAR VERTICAL */
+QScrollBar::handle:vertical {	
+	background-color: rgb(170, 176, 255);
+	min-height: 30px;
+	border-radius: 7px;
+}
+
+
+/* BTN TOP - SCROLLBAR */
+QScrollBar::sub-line:vertical {
+	border: none;
+	background-color: rgb(170, 176, 255);
+	height: 15px;
+	border-top-left-radius: 7px;
+	border-top-right-radius: 7px;
+	subcontrol-position: top;
+	subcontrol-origin: margin;
+}
+
+/* BTN BOTTOM - SCROLLBAR */
+QScrollBar::add-line:vertical {
+	border: none;
+	background-color: rgb(170, 176, 255);
+	height: 15px;
+	border-bottom-left-radius: 7px;
+	border-bottom-right-radius: 7px;
+	subcontrol-position: bottom;
+	subcontrol-origin: margin;
+}
+/* RESET ARROW */
+QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+	background: none;
+}
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+	background: none;
+}
+</string>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>70</y>
+      <width>161</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 300 8pt &quot;Poppins&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Paste text</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>210</y>
+      <width>131</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 300 8pt &quot;Poppins&quot;;
+border-radius: 5px;</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Summarise</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>20%</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>50%</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>70%</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QFontComboBox" name="fontComboBox">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>470</y>
+      <width>131</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+border-radius: 5px;</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>470</y>
+      <width>131</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 300 8pt &quot;Poppins&quot;;
+border-radius: 5px;
+colour: grey;</string>
+    </property>
+    <property name="text">
+     <string>Rename PDF</string>
+    </property>
+   </widget>
+   <widget class="QScrollBar" name="verticalScrollBar_2">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>320</y>
+      <width>20</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">/* VERTICAL SCROLLBAR */
+ QScrollBar:vertical {
+	border: none;
+    background:rgb(225, 235, 255);
+    width: 14px;
+    margin: 15px 0 15px 0;
+	border-radius: 0px;
+ }
+
+/*  HANDLE BAR VERTICAL */
+QScrollBar::handle:vertical {	
+	background-color: rgb(170, 176, 255);
+	min-height: 30px;
+	border-radius: 7px;
+}
+
+
+/* BTN TOP - SCROLLBAR */
+QScrollBar::sub-line:vertical {
+	border: none;
+	background-color: rgb(170, 176, 255);
+	height: 15px;
+	border-top-left-radius: 7px;
+	border-top-right-radius: 7px;
+	subcontrol-position: top;
+	subcontrol-origin: margin;
+}
+
+/* BTN BOTTOM - SCROLLBAR */
+QScrollBar::add-line:vertical {
+	border: none;
+	background-color: rgb(170, 176, 255);
+	height: 15px;
+	border-bottom-left-radius: 7px;
+	border-bottom-right-radius: 7px;
+	subcontrol-position: bottom;
+	subcontrol-origin: margin;
+}
+/* RESET ARROW */
+QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+	background: none;
+}
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+	background: none;
+}
+</string>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox_2">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>470</y>
+      <width>131</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 300 8pt &quot;Poppins&quot;;
+border-radius: 5px;</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Font Size</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>1</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>2</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>3</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>4</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>5</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>6</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>7</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>8</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>9</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>10</string>
+     </property>
+    </item>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>817</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionOpen"/>
+    <addaction name="actionSave_Export"/>
+   </widget>
+   <addaction name="menuFile"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionOpen">
+   <property name="text">
+    <string>Open</string>
+   </property>
+   <property name="statusTip">
+    <string>open a pdf file or text file</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionSave_Export">
+   <property name="text">
+    <string>Save/Export</string>
+   </property>
+   <property name="statusTip">
+    <string>save the file</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
