@@ -1,4 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import QIcon
 from PyQt5.QtPrintSupport import QPrinter
 from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtCore import QFileInfo
@@ -201,7 +202,9 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        icon = QIcon('icon.png')
+        MainWindow.setWindowIcon(icon)
+        MainWindow.setWindowTitle(_translate("MainWindow", "Summarizer"))
         self.open_pdf.setText(_translate("MainWindow", "Select PDF"))
         self.orLabel.setText(_translate("MainWindow", "OR"))
         self.exportPDFbutton.setText(_translate("MainWindow", "Export PDF"))
