@@ -148,67 +148,6 @@ border-radius: 100px;</string>
      <string>Result</string>
     </property>
    </widget>
-   <widget class="QScrollBar" name="verticalScrollBar">
-    <property name="geometry">
-     <rect>
-      <x>660</x>
-      <y>70</y>
-      <width>20</width>
-      <height>111</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">/* VERTICAL SCROLLBAR */
- QScrollBar:vertical {
-	border: none;
-    background:rgb(225, 235, 255);
-    width: 14px;
-    margin: 15px 0 15px 0;
-	border-radius: 0px;
- }
-
-/*  HANDLE BAR VERTICAL */
-QScrollBar::handle:vertical {	
-	background-color: rgb(170, 176, 255);
-	min-height: 30px;
-	border-radius: 7px;
-}
-
-
-/* BTN TOP - SCROLLBAR */
-QScrollBar::sub-line:vertical {
-	border: none;
-	background-color: rgb(170, 176, 255);
-	height: 15px;
-	border-top-left-radius: 7px;
-	border-top-right-radius: 7px;
-	subcontrol-position: top;
-	subcontrol-origin: margin;
-}
-
-/* BTN BOTTOM - SCROLLBAR */
-QScrollBar::add-line:vertical {
-	border: none;
-	background-color: rgb(170, 176, 255);
-	height: 15px;
-	border-bottom-left-radius: 7px;
-	border-bottom-right-radius: 7px;
-	subcontrol-position: bottom;
-	subcontrol-origin: margin;
-}
-/* RESET ARROW */
-QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
-	background: none;
-}
-QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
-	background: none;
-}
-</string>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
@@ -262,7 +201,7 @@ border-radius: 5px;</string>
    <widget class="QFontComboBox" name="fontComboBox">
     <property name="geometry">
      <rect>
-      <x>180</x>
+      <x>240</x>
       <y>470</y>
       <width>131</width>
       <height>22</height>
@@ -273,89 +212,10 @@ border-radius: 5px;</string>
 border-radius: 5px;</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
-    <property name="geometry">
-     <rect>
-      <x>360</x>
-      <y>470</y>
-      <width>131</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 300 8pt &quot;Poppins&quot;;
-border-radius: 5px;
-colour: grey;</string>
-    </property>
-    <property name="text">
-     <string>Rename PDF</string>
-    </property>
-   </widget>
-   <widget class="QScrollBar" name="verticalScrollBar_2">
-    <property name="geometry">
-     <rect>
-      <x>660</x>
-      <y>320</y>
-      <width>20</width>
-      <height>121</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">/* VERTICAL SCROLLBAR */
- QScrollBar:vertical {
-	border: none;
-    background:rgb(225, 235, 255);
-    width: 14px;
-    margin: 15px 0 15px 0;
-	border-radius: 0px;
- }
-
-/*  HANDLE BAR VERTICAL */
-QScrollBar::handle:vertical {	
-	background-color: rgb(170, 176, 255);
-	min-height: 30px;
-	border-radius: 7px;
-}
-
-
-/* BTN TOP - SCROLLBAR */
-QScrollBar::sub-line:vertical {
-	border: none;
-	background-color: rgb(170, 176, 255);
-	height: 15px;
-	border-top-left-radius: 7px;
-	border-top-right-radius: 7px;
-	subcontrol-position: top;
-	subcontrol-origin: margin;
-}
-
-/* BTN BOTTOM - SCROLLBAR */
-QScrollBar::add-line:vertical {
-	border: none;
-	background-color: rgb(170, 176, 255);
-	height: 15px;
-	border-bottom-left-radius: 7px;
-	border-bottom-right-radius: 7px;
-	subcontrol-position: bottom;
-	subcontrol-origin: margin;
-}
-/* RESET ARROW */
-QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
-	background: none;
-}
-QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
-	background: none;
-}
-</string>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
-    </property>
-   </widget>
    <widget class="QComboBox" name="comboBox_2">
     <property name="geometry">
      <rect>
-      <x>530</x>
+      <x>480</x>
       <y>470</y>
       <width>131</width>
       <height>22</height>

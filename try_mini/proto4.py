@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'proto2.ui'
+# Form implementation generated from reading ui file 'proto4.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -62,56 +62,6 @@ class Ui_MainWindow(object):
         self.label_3.setStyleSheet("font: 300 8pt \"Poppins\";\n"
 "")
         self.label_3.setObjectName("label_3")
-        self.verticalScrollBar = QtWidgets.QScrollBar(self.centralwidget)
-        self.verticalScrollBar.setGeometry(QtCore.QRect(660, 70, 20, 111))
-        self.verticalScrollBar.setStyleSheet("/* VERTICAL SCROLLBAR */\n"
-" QScrollBar:vertical {\n"
-"    border: none;\n"
-"    background:rgb(225, 235, 255);\n"
-"    width: 14px;\n"
-"    margin: 15px 0 15px 0;\n"
-"    border-radius: 0px;\n"
-" }\n"
-"\n"
-"/*  HANDLE BAR VERTICAL */\n"
-"QScrollBar::handle:vertical {    \n"
-"    background-color: rgb(170, 176, 255);\n"
-"    min-height: 30px;\n"
-"    border-radius: 7px;\n"
-"}\n"
-"\n"
-"\n"
-"/* BTN TOP - SCROLLBAR */\n"
-"QScrollBar::sub-line:vertical {\n"
-"    border: none;\n"
-"    background-color: rgb(170, 176, 255);\n"
-"    height: 15px;\n"
-"    border-top-left-radius: 7px;\n"
-"    border-top-right-radius: 7px;\n"
-"    subcontrol-position: top;\n"
-"    subcontrol-origin: margin;\n"
-"}\n"
-"\n"
-"/* BTN BOTTOM - SCROLLBAR */\n"
-"QScrollBar::add-line:vertical {\n"
-"    border: none;\n"
-"    background-color: rgb(170, 176, 255);\n"
-"    height: 15px;\n"
-"    border-bottom-left-radius: 7px;\n"
-"    border-bottom-right-radius: 7px;\n"
-"    subcontrol-position: bottom;\n"
-"    subcontrol-origin: margin;\n"
-"}\n"
-"/* RESET ARROW */\n"
-"QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {\n"
-"    background: none;\n"
-"}\n"
-"QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
-"    background: none;\n"
-"}\n"
-"")
-        self.verticalScrollBar.setOrientation(QtCore.Qt.Vertical)
-        self.verticalScrollBar.setObjectName("verticalScrollBar")
         self.label_5 = QtWidgets.QLabel(self.centralwidget)
         self.label_5.setGeometry(QtCore.QRect(490, 70, 161, 16))
         self.label_5.setStyleSheet("font: 300 8pt \"Poppins\";")
@@ -126,68 +76,12 @@ class Ui_MainWindow(object):
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.fontComboBox = QtWidgets.QFontComboBox(self.centralwidget)
-        self.fontComboBox.setGeometry(QtCore.QRect(180, 470, 131, 22))
+        self.fontComboBox.setGeometry(QtCore.QRect(240, 470, 131, 22))
         self.fontComboBox.setStyleSheet("\n"
 "border-radius: 5px;")
         self.fontComboBox.setObjectName("fontComboBox")
-        self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit.setGeometry(QtCore.QRect(360, 470, 131, 21))
-        self.lineEdit.setStyleSheet("font: 300 8pt \"Poppins\";\n"
-"border-radius: 5px;\n"
-"colour: grey;")
-        self.lineEdit.setObjectName("lineEdit")
-        self.verticalScrollBar_2 = QtWidgets.QScrollBar(self.centralwidget)
-        self.verticalScrollBar_2.setGeometry(QtCore.QRect(660, 320, 20, 121))
-        self.verticalScrollBar_2.setStyleSheet("/* VERTICAL SCROLLBAR */\n"
-" QScrollBar:vertical {\n"
-"    border: none;\n"
-"    background:rgb(225, 235, 255);\n"
-"    width: 14px;\n"
-"    margin: 15px 0 15px 0;\n"
-"    border-radius: 0px;\n"
-" }\n"
-"\n"
-"/*  HANDLE BAR VERTICAL */\n"
-"QScrollBar::handle:vertical {    \n"
-"    background-color: rgb(170, 176, 255);\n"
-"    min-height: 30px;\n"
-"    border-radius: 7px;\n"
-"}\n"
-"\n"
-"\n"
-"/* BTN TOP - SCROLLBAR */\n"
-"QScrollBar::sub-line:vertical {\n"
-"    border: none;\n"
-"    background-color: rgb(170, 176, 255);\n"
-"    height: 15px;\n"
-"    border-top-left-radius: 7px;\n"
-"    border-top-right-radius: 7px;\n"
-"    subcontrol-position: top;\n"
-"    subcontrol-origin: margin;\n"
-"}\n"
-"\n"
-"/* BTN BOTTOM - SCROLLBAR */\n"
-"QScrollBar::add-line:vertical {\n"
-"    border: none;\n"
-"    background-color: rgb(170, 176, 255);\n"
-"    height: 15px;\n"
-"    border-bottom-left-radius: 7px;\n"
-"    border-bottom-right-radius: 7px;\n"
-"    subcontrol-position: bottom;\n"
-"    subcontrol-origin: margin;\n"
-"}\n"
-"/* RESET ARROW */\n"
-"QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {\n"
-"    background: none;\n"
-"}\n"
-"QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
-"    background: none;\n"
-"}\n"
-"")
-        self.verticalScrollBar_2.setOrientation(QtCore.Qt.Vertical)
-        self.verticalScrollBar_2.setObjectName("verticalScrollBar_2")
         self.comboBox_2 = QtWidgets.QComboBox(self.centralwidget)
-        self.comboBox_2.setGeometry(QtCore.QRect(530, 470, 131, 22))
+        self.comboBox_2.setGeometry(QtCore.QRect(480, 470, 131, 22))
         self.comboBox_2.setStyleSheet("font: 300 8pt \"Poppins\";\n"
 "border-radius: 5px;")
         self.comboBox_2.setObjectName("comboBox_2")
@@ -236,7 +130,6 @@ class Ui_MainWindow(object):
         self.comboBox.setItemText(1, _translate("MainWindow", "20%"))
         self.comboBox.setItemText(2, _translate("MainWindow", "50%"))
         self.comboBox.setItemText(3, _translate("MainWindow", "70%"))
-        self.lineEdit.setText(_translate("MainWindow", "Rename PDF"))
         self.comboBox_2.setItemText(0, _translate("MainWindow", "Font Size"))
         self.comboBox_2.setItemText(1, _translate("MainWindow", "1"))
         self.comboBox_2.setItemText(2, _translate("MainWindow", "2"))
