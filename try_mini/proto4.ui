@@ -32,6 +32,12 @@ border-radius:10px;</string>
     <property name="text">
      <string>Select PDF</string>
     </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
@@ -88,7 +94,7 @@ border-radius:10px;</string>
      <string>CONVERT</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="outputTextField">
+   <widget class="QTextEdit" name="inputTextField">
     <property name="enabled">
      <bool>true</bool>
     </property>
@@ -104,11 +110,10 @@ border-radius:10px;</string>
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">
-border-radius: 100px;</string>
+     <string notr="true"/>
     </property>
    </widget>
-   <widget class="QTextEdit" name="inputTextField">
+   <widget class="QTextEdit" name="outputTextField">
     <property name="geometry">
      <rect>
       <x>160</x>
@@ -131,40 +136,7 @@ border-radius: 100px;</string>
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>320</y>
-      <width>49</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 300 8pt &quot;Poppins&quot;;
-</string>
-    </property>
-    <property name="text">
-     <string>Result</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>490</x>
-      <y>70</y>
-      <width>161</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 300 8pt &quot;Poppins&quot;;</string>
-    </property>
-    <property name="text">
-     <string>Paste text</string>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="comboBox">
+   <widget class="QComboBox" name="summaryLength">
     <property name="geometry">
      <rect>
       <x>360</x>
@@ -198,7 +170,7 @@ border-radius: 5px;</string>
      </property>
     </item>
    </widget>
-   <widget class="QFontComboBox" name="fontComboBox">
+   <widget class="QFontComboBox" name="fontType">
     <property name="geometry">
      <rect>
       <x>240</x>
@@ -212,7 +184,7 @@ border-radius: 5px;</string>
 border-radius: 5px;</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox_2">
+   <widget class="QComboBox" name="fontSize">
     <property name="geometry">
      <rect>
       <x>480</x>

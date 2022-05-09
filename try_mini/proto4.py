@@ -9,9 +9,15 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtPrintSupport import QPrinter
+from PyQt5.QtWidgets import QFileDialog
+from PyQt5.QtCore import QFileInfo
+from try_mini import pdf2, python1, python2
+import aspose as aw
+from fpdf import FPDF
 
 
-class Ui_MainWindow(object):
+class Ui_MainWindow(QtWidgets.QMainWindow):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(817, 590)
@@ -23,6 +29,8 @@ class Ui_MainWindow(object):
 "font: 9pt \"Poppins\";\n"
 "color: white;\n"
 "border-radius:10px;")
+        self.open_pdf.setAutoDefault(False)
+        self.open_pdf.setDefault(False)
         self.open_pdf.setObjectName("open_pdf")
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(420, 120, 31, 21))
@@ -43,59 +51,53 @@ class Ui_MainWindow(object):
 "color: white;\n"
 "border-radius:10px;")
         self.convertButton.setObjectName("convertButton")
-        self.outputTextField = QtWidgets.QTextEdit(self.centralwidget)
-        self.outputTextField.setEnabled(True)
-        self.outputTextField.setGeometry(QtCore.QRect(480, 60, 211, 131))
-        self.outputTextField.setAutoFillBackground(False)
-        self.outputTextField.setStyleSheet("\n"
-"border-radius: 100px;")
-        self.outputTextField.setObjectName("outputTextField")
         self.inputTextField = QtWidgets.QTextEdit(self.centralwidget)
-        self.inputTextField.setGeometry(QtCore.QRect(160, 310, 531, 141))
+        self.inputTextField.setEnabled(True)
+        self.inputTextField.setGeometry(QtCore.QRect(480, 60, 211, 131))
+        self.inputTextField.setAutoFillBackground(False)
+        self.inputTextField.setStyleSheet("")
         self.inputTextField.setObjectName("inputTextField")
+        self.inputTextField.setPlaceholderText("Enter text here ...")
+        self.inputTextField.setAcceptRichText(False)
+        self.outputTextField = QtWidgets.QTextEdit(self.centralwidget)
+        self.outputTextField.setGeometry(QtCore.QRect(160, 310, 531, 141))
+        self.outputTextField.setObjectName("outputTextField")
+        self.outputTextField.setPlaceholderText("Output will be displayed here ...")
+        self.outputTextField.setReadOnly(True)
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
         self.label_4.setGeometry(QtCore.QRect(230, 350, 49, 16))
         self.label_4.setText("")
         self.label_4.setObjectName("label_4")
-        self.label_3 = QtWidgets.QLabel(self.centralwidget)
-        self.label_3.setGeometry(QtCore.QRect(170, 320, 49, 16))
-        self.label_3.setStyleSheet("font: 300 8pt \"Poppins\";\n"
-"")
-        self.label_3.setObjectName("label_3")
-        self.label_5 = QtWidgets.QLabel(self.centralwidget)
-        self.label_5.setGeometry(QtCore.QRect(490, 70, 161, 16))
-        self.label_5.setStyleSheet("font: 300 8pt \"Poppins\";")
-        self.label_5.setObjectName("label_5")
-        self.comboBox = QtWidgets.QComboBox(self.centralwidget)
-        self.comboBox.setGeometry(QtCore.QRect(360, 210, 131, 22))
-        self.comboBox.setStyleSheet("font: 300 8pt \"Poppins\";\n"
+        self.summaryLength = QtWidgets.QComboBox(self.centralwidget)
+        self.summaryLength.setGeometry(QtCore.QRect(360, 210, 131, 22))
+        self.summaryLength.setStyleSheet("font: 300 8pt \"Poppins\";\n"
 "border-radius: 5px;")
-        self.comboBox.setObjectName("comboBox")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.fontComboBox = QtWidgets.QFontComboBox(self.centralwidget)
-        self.fontComboBox.setGeometry(QtCore.QRect(240, 470, 131, 22))
-        self.fontComboBox.setStyleSheet("\n"
+        self.summaryLength.setObjectName("summaryLength")
+        self.summaryLength.addItem("")
+        self.summaryLength.addItem("")
+        self.summaryLength.addItem("")
+        self.summaryLength.addItem("")
+        self.fontType = QtWidgets.QFontComboBox(self.centralwidget)
+        self.fontType.setGeometry(QtCore.QRect(240, 470, 131, 22))
+        self.fontType.setStyleSheet("\n"
 "border-radius: 5px;")
-        self.fontComboBox.setObjectName("fontComboBox")
-        self.comboBox_2 = QtWidgets.QComboBox(self.centralwidget)
-        self.comboBox_2.setGeometry(QtCore.QRect(480, 470, 131, 22))
-        self.comboBox_2.setStyleSheet("font: 300 8pt \"Poppins\";\n"
+        self.fontType.setObjectName("fontType")
+        self.fontSize = QtWidgets.QComboBox(self.centralwidget)
+        self.fontSize.setGeometry(QtCore.QRect(480, 470, 131, 22))
+        self.fontSize.setStyleSheet("font: 300 8pt \"Poppins\";\n"
 "border-radius: 5px;")
-        self.comboBox_2.setObjectName("comboBox_2")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
+        self.fontSize.setObjectName("fontSize")
+        self.fontSize.addItem("")
+        self.fontSize.addItem("")
+        self.fontSize.addItem("")
+        self.fontSize.addItem("")
+        self.fontSize.addItem("")
+        self.fontSize.addItem("")
+        self.fontSize.addItem("")
+        self.fontSize.addItem("")
+        self.fontSize.addItem("")
+        self.fontSize.addItem("")
+        self.fontSize.addItem("")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 817, 22))
@@ -117,6 +119,77 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+        self.actionOpen.triggered.connect(self.openFile)
+        self.open_pdf.clicked.connect(self.openFile)
+
+        self.convertButton.clicked.connect(self.convertText)
+
+        self.exportPDFbutton.clicked.connect(self.pdfExport)
+
+
+    def convertText(self):
+        txt = self.inputTextField.toPlainText()
+        self.ouputText = python2.summaryText(txt)
+        self.outputTextField.setText(self.ouputText)
+
+    def openFile(self):
+        filename, _ = QtWidgets.QFileDialog.getOpenFileName(
+            self,
+            "Select a text file to open…",
+            QtCore.QDir.homePath(),
+            'Text Files (*.txt) ;;Pdf Files (*.pdf) ;;All Files (*)',
+            'Python Files (*.py)',
+            QtWidgets.QFileDialog.DontUseNativeDialog |
+            QtWidgets.QFileDialog.DontResolveSymlinks
+        )
+        if filename:
+            print(filename)
+            if filename.endswith('.pdf'):
+                text = pdf2.pdf_to_txt(filename)
+                python2.summaryText(text)
+                self.outputTextField.setText(python2.summaryText(text))
+            elif filename.endswith('.txt'):
+                python2.summary(filename)
+                self.outputTextField.setText(python2.summary(filename))
+            else:
+                self.outputTextField.setText("Invalid file type")
+
+            # try:
+            #     with open(filename, 'r') as fh:
+            #         pdf2.pdf_to_txt(fh)
+            # except Exception as e:
+            #     # Errata:  Book contains the following line:
+            #     # qtw.QMessageBox.critical(f"Could not load file: {e}")
+            #     # It should read like this:
+            #     QtWidgets.QMessageBox.critical(self, f"Could not load file: {e}")
+
+    def export_to_pdf(self):
+        pdf = FPDF()
+        pdf.set_auto_page_break(auto=True, margin=15)
+        pdf.add_page()
+        pdf.set_font("Arial", size=14)
+        # add another cell
+        pdf.multi_cell(w=0, txt=self.ouputText, border=0,
+                       align='L', max_line_height=pdf.font_size, fill=False)
+        # save the pdf with name .pdf
+        pdf.output("GFG.pdf")
+        # # doc = aw.Document("document.txt")
+        # doc = self.ouputText
+        # # save TXT as PDF file
+        # doc.save("txt-to-pdf.pdf", aw..PDF)
+
+    def pdfExport(self):
+        fn, _ = QFileDialog.getSaveFileName(self, "Export PDF", None, "PDF files (.pdf);;All Files()")
+
+        if fn != '':
+
+            if QFileInfo(fn).suffix() == "": fn += '.pdf'
+
+            printer = QPrinter(QPrinter.HighResolution)
+            printer.setOutputFormat(QPrinter.PdfFormat)
+            printer.setOutputFileName(fn)
+            self.outputTextField.document().print_(printer)
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -124,23 +197,21 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", "OR"))
         self.exportPDFbutton.setText(_translate("MainWindow", "Export PDF"))
         self.convertButton.setText(_translate("MainWindow", "CONVERT"))
-        self.label_3.setText(_translate("MainWindow", "Result"))
-        self.label_5.setText(_translate("MainWindow", "Paste text"))
-        self.comboBox.setItemText(0, _translate("MainWindow", "Summarise"))
-        self.comboBox.setItemText(1, _translate("MainWindow", "20%"))
-        self.comboBox.setItemText(2, _translate("MainWindow", "50%"))
-        self.comboBox.setItemText(3, _translate("MainWindow", "70%"))
-        self.comboBox_2.setItemText(0, _translate("MainWindow", "Font Size"))
-        self.comboBox_2.setItemText(1, _translate("MainWindow", "1"))
-        self.comboBox_2.setItemText(2, _translate("MainWindow", "2"))
-        self.comboBox_2.setItemText(3, _translate("MainWindow", "3"))
-        self.comboBox_2.setItemText(4, _translate("MainWindow", "4"))
-        self.comboBox_2.setItemText(5, _translate("MainWindow", "5"))
-        self.comboBox_2.setItemText(6, _translate("MainWindow", "6"))
-        self.comboBox_2.setItemText(7, _translate("MainWindow", "7"))
-        self.comboBox_2.setItemText(8, _translate("MainWindow", "8"))
-        self.comboBox_2.setItemText(9, _translate("MainWindow", "9"))
-        self.comboBox_2.setItemText(10, _translate("MainWindow", "10"))
+        self.summaryLength.setItemText(0, _translate("MainWindow", "Summarise"))
+        self.summaryLength.setItemText(1, _translate("MainWindow", "20%"))
+        self.summaryLength.setItemText(2, _translate("MainWindow", "50%"))
+        self.summaryLength.setItemText(3, _translate("MainWindow", "70%"))
+        self.fontSize.setItemText(0, _translate("MainWindow", "Font Size"))
+        self.fontSize.setItemText(1, _translate("MainWindow", "1"))
+        self.fontSize.setItemText(2, _translate("MainWindow", "2"))
+        self.fontSize.setItemText(3, _translate("MainWindow", "3"))
+        self.fontSize.setItemText(4, _translate("MainWindow", "4"))
+        self.fontSize.setItemText(5, _translate("MainWindow", "5"))
+        self.fontSize.setItemText(6, _translate("MainWindow", "6"))
+        self.fontSize.setItemText(7, _translate("MainWindow", "7"))
+        self.fontSize.setItemText(8, _translate("MainWindow", "8"))
+        self.fontSize.setItemText(9, _translate("MainWindow", "9"))
+        self.fontSize.setItemText(10, _translate("MainWindow", "10"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.actionOpen.setText(_translate("MainWindow", "Open"))
         self.actionOpen.setStatusTip(_translate("MainWindow", "open a pdf file or text file"))
