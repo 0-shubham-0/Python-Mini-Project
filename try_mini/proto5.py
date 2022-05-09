@@ -31,30 +31,30 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.open_pdf = QtWidgets.QPushButton(self.centralwidget)
         self.open_pdf.setGeometry(QtCore.QRect(190, 60, 181, 131))
         self.open_pdf.setStyleSheet("background: rgb(170, 170, 255);\n"
-"font: 9pt \"Poppins\";\n"
-"color: white;\n"
-"border-radius:10px;")
+                                    "font: 9pt \"Poppins\";\n"
+                                    "color: white;\n"
+                                    "border-radius:10px;")
         self.open_pdf.setAutoDefault(False)
         self.open_pdf.setDefault(False)
         self.open_pdf.setObjectName("open_pdf")
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(420, 120, 31, 21))
         self.label.setStyleSheet("color: rgb(95,70,200);\n"
-"font: 9pt \"Poppins\";")
+                                 "font: 9pt \"Poppins\";")
         self.label.setObjectName("label")
         self.exportPDFbutton = QtWidgets.QPushButton(self.centralwidget)
         self.exportPDFbutton.setGeometry(QtCore.QRect(370, 510, 111, 31))
         self.exportPDFbutton.setStyleSheet("background-color: rgb(170, 170, 255);\n"
-"font: 9pt \"Poppins\";\n"
-"color: white;\n"
-"border-radius:10px;")
+                                           "font: 9pt \"Poppins\";\n"
+                                           "color: white;\n"
+                                           "border-radius:10px;")
         self.exportPDFbutton.setObjectName("exportPDFbutton")
         self.convertButton = QtWidgets.QPushButton(self.centralwidget)
         self.convertButton.setGeometry(QtCore.QRect(300, 250, 251, 41))
         self.convertButton.setStyleSheet("background-color: rgb(95,70,200);\n"
-"font: 9pt \"Poppins\";\n"
-"color: white;\n"
-"border-radius:10px;")
+                                         "font: 9pt \"Poppins\";\n"
+                                         "color: white;\n"
+                                         "border-radius:10px;")
         self.convertButton.setObjectName("convertButton")
         self.inputTextField = QtWidgets.QTextEdit(self.centralwidget)
         self.inputTextField.setEnabled(True)
@@ -72,7 +72,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.summaryLength = QtWidgets.QComboBox(self.centralwidget)
         self.summaryLength.setGeometry(QtCore.QRect(360, 210, 131, 22))
         self.summaryLength.setStyleSheet("font: 300 8pt \"Poppins\";\n"
-"border-radius: 5px;")
+                                         "border-radius: 5px;")
         self.summaryLength.setObjectName("summaryLength")
         self.summaryLength.addItem("")
         self.summaryLength.addItem("")
@@ -81,12 +81,12 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.fontType = QtWidgets.QFontComboBox(self.centralwidget)
         self.fontType.setGeometry(QtCore.QRect(240, 470, 131, 22))
         self.fontType.setStyleSheet("\n"
-"border-radius: 5px;")
+                                    "border-radius: 5px;")
         self.fontType.setObjectName("fontType")
         self.fontSize = QtWidgets.QComboBox(self.centralwidget)
         self.fontSize.setGeometry(QtCore.QRect(480, 470, 131, 22))
         self.fontSize.setStyleSheet("font: 300 8pt \"Poppins\";\n"
-"border-radius: 5px;")
+                                    "border-radius: 5px;")
         self.fontSize.setObjectName("fontSize")
         self.fontSize.addItem("")
         self.fontSize.addItem("")
@@ -131,7 +131,6 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.convertButton.clicked.connect(self.convertText)
 
         self.exportPDFbutton.clicked.connect(self.pdfExport)
-
 
     def convertText(self):
         if self.inputTextField.toPlainText() == '':
@@ -188,14 +187,22 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         # doc.save("txt-to-pdf.pdf", aw..PDF)
 
     def pdfExport(self):
-        if self.outputTextField.toPlainText() == '':
-            self.errorLabel.setText("Summary not generated !")
+        if self.outputTextField.toPlainText() == '' or self.fontSize.currentText() == "Font Size":
+            if self.fontSize.currentText() == "Font Size":
+                self.errorLabel.setText("Please select Font Size")
+            else:
+                self.errorLabel.setText("Summary not generated !")
         else:
             fn, _ = QFileDialog.getSaveFileName(self, "Export PDF", None, "PDF files (.pdf);;All Files()")
 
             if fn != '':
 
                 if QFileInfo(fn).suffix() == "": fn += '.pdf'
+
+                font = QtGui.QFont()
+                font.setPointSize(int(self.fontSize.currentText()))
+                font.setFamily(self.fontType.currentText())
+                self.outputTextField.setFont(font)
 
                 printer = QPrinter(QPrinter.HighResolution)
                 printer.setOutputFormat(QPrinter.PdfFormat)
@@ -229,6 +236,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
