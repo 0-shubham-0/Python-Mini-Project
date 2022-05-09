@@ -153,7 +153,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
             if filename.endswith('.pdf'):
                 text = pdf2.pdf_to_txt(filename)
                 if text[0] == 0:
-                    self.errorLabel.setText("There are images in the pdf")
+                    self.errorLabel.setText("There are pages which only contain image")
                     self.inputTextField.setText(text[1])
                 elif text[0] == 1:
                     self.errorLabel.setText("Unsupported file")
