@@ -49,6 +49,7 @@ def summary(text):
                     sentenceValue[sentence] = freq
 
     sumValues = 0
+
     for sentence in sentenceValue:
         sumValues += sentenceValue[sentence]
     # Average value of a sentence from the original text

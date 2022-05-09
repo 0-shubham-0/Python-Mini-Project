@@ -9,7 +9,10 @@
 
 
 from PyQt5 import QtCore, QtWidgets
-from try_mini import pdf2, python1, python2
+
+import pdf2
+import python1
+
 
 class Ui_MainWindow(QtWidgets.QMainWindow):
     def setupUi(self, MainWindow):
