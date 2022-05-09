@@ -143,7 +143,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
             self,
             "Select a text file to open…",
             QtCore.QDir.homePath(),
-            'Text Files (*.txt) ;;Pdf Files (*.pdf) ;;All Files (*)',
+            'Text Files (*.txt) ;;Pdf Files (*.pdf)',
             'Python Files (*.py)',
             QtWidgets.QFileDialog.DontUseNativeDialog |
             QtWidgets.QFileDialog.DontResolveSymlinks
@@ -152,7 +152,14 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
             print(filename)
             if filename.endswith('.pdf'):
                 text = pdf2.pdf_to_txt(filename)
-                self.inputTextField.setText(text)
+                if text[0] == 0:
+                    self.errorLabel.setText("There are images in the pdf")
+                    self.inputTextField.setText(text[1])
+                elif text[0] == 1:
+                    self.errorLabel.setText("Unsupported file")
+                else:
+                    self.inputTextField.setText(text[0])
+                    self.errorLabel.setText("")
             elif filename.endswith('.txt'):
                 scraped_data = open(filename, 'r')
                 article = scraped_data.read()
