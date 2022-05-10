@@ -208,7 +208,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         icon = QIcon('icon.png')
         MainWindow.setWindowIcon(icon)
         MainWindow.setWindowTitle(_translate("MainWindow", "Summarizer"))
-        self.open_pdf.setText(_translate("MainWindow", "Select PDF/TXT/DOCX"))
+        self.open_pdf.setText(_translate("MainWindow", "Select \nPDF/TXT/DOCX"))
         self.orLabel.setText(_translate("MainWindow", "OR"))
         self.exportPDFbutton.setText(_translate("MainWindow", "Export PDF"))
         self.convertButton.setText(_translate("MainWindow", "CONVERT"))
