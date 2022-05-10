@@ -3,7 +3,7 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtPrintSupport import QPrinter
 from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtCore import QFileInfo
-from try_mini.prototypes import pdf2, python2
+import file_conversions, summary_algo
 
 
 class Ui_MainWindow(QtWidgets.QMainWindow):
@@ -156,7 +156,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         if filename:
             print(filename)
             if filename.endswith('.pdf'):
-                text = pdf2.pdf_to_txt(filename)
+                text = file_conversions.pdf_to_txt(filename)
                 if text[0] == 0:
                     self.errorLabel.setText("There are pages which only contain image")
                     self.inputTextField.setText(text[1])
@@ -170,7 +170,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
                 article = scraped_data.read()
                 self.inputTextField.setText(article)
             elif filename.endswith('.docx'):
-                text = pdf2.getText(filename)
+                text = file_conversions.getText(filename)
                 self.inputTextField.setText(text)
             else:
                 self.outputTextField.setText("Invalid file type")
@@ -180,8 +180,12 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
             self.errorLabel.setText("Input Text is empty !")
         else:
             txt = self.inputTextField.toPlainText()
-            self.ouputText = python2.summaryText(txt, self.summaryLength.currentText())
+            self.ouputText = summary_algo.summaryText(txt, self.summaryLength.currentText())
             self.outputTextField.setText(self.ouputText)
+            if self.ouputText == "":
+                self.errorLabel.setText("Cannot generate summary")
+            else:
+                self.errorLabel.setText("")
 
     def pdfExport(self):
         if self.outputTextField.toPlainText() == '':
