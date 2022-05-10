@@ -148,7 +148,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
             self,
             "Select a text file to open…",
             QtCore.QDir.homePath(),
-            'Text Files (*.txt) ;;Pdf Files (*.pdf)',
+            'Text Files (*.txt) ;;Pdf Files (*.pdf) ;;Word Files(*.docx)',
             'Python Files (*.py)',
             QtWidgets.QFileDialog.DontUseNativeDialog |
             QtWidgets.QFileDialog.DontResolveSymlinks
@@ -169,6 +169,9 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
                 scraped_data = open(filename, 'r')
                 article = scraped_data.read()
                 self.inputTextField.setText(article)
+            elif filename.endswith('.docx'):
+                text = pdf2.getText(filename)
+                self.inputTextField.setText(text)
             else:
                 self.outputTextField.setText("Invalid file type")
 
@@ -205,7 +208,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         icon = QIcon('icon.png')
         MainWindow.setWindowIcon(icon)
         MainWindow.setWindowTitle(_translate("MainWindow", "Summarizer"))
-        self.open_pdf.setText(_translate("MainWindow", "Select PDF"))
+        self.open_pdf.setText(_translate("MainWindow", "Select PDF/TXT/DOCX"))
         self.orLabel.setText(_translate("MainWindow", "OR"))
         self.exportPDFbutton.setText(_translate("MainWindow", "Export PDF"))
         self.convertButton.setText(_translate("MainWindow", "CONVERT"))

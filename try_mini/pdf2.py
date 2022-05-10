@@ -1,3 +1,4 @@
+import docx
 import pdfplumber
 
 
@@ -30,3 +31,12 @@ def pdf_to_txt(file):
         return [0, text]
     else:
         return [1]
+
+
+def getText(filename):
+    doc = docx.Document(filename)
+    fullText = []
+    for para in doc.paragraphs:
+        fullText.append(para.text)
+    return '\n'.join(fullText)
+
