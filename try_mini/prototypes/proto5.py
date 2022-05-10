@@ -2,7 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtPrintSupport import QPrinter
 from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtCore import QFileInfo
-from try_mini import pdf2, python2
+from try_mini.prototypes import pdf2, python2
 from fpdf import FPDF
 
 
