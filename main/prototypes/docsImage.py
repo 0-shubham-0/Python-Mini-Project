@@ -1,14 +1,6 @@
-import docx
 import docx2txt as dt
 import os
-import glob
-
-def getText(filename):
-    doc = docx.Document(filename)
-    fullText = []
-    for para in doc.paragraphs:
-        fullText.append(para.text)
-    return '\n'.join(fullText)
+import shutil
 
 
 def docx_to_text(path_to_file, images_folder, get_text=True):
@@ -20,9 +12,12 @@ def docx_to_text(path_to_file, images_folder, get_text=True):
             return [text]
         else:
             print("Not empty directory")
-            files = glob.glob(images_folder)
-            for f in files:
-                os.remove(f)
+            for root, dirs, files in os.walk(images_folder):
+                for f in files:
+                    os.unlink(os.path.join(root, f))
+                for d in dirs:
+                    shutil.rmtree(os.path.join(root, d))
+
             return [0, text]  # Images exist
     else:
         return [1]  # Some error
@@ -33,3 +28,5 @@ images_folder = './images/'
 print(images_folder)
 
 docx_to_text(path_to_file, images_folder)
+
+
