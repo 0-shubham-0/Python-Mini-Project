@@ -157,7 +157,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         )
         if filename:
             print(filename)
-            doc.doc(filename)
+            # doc.doc(filename)
             if filename.endswith('.pdf'):
                 text = pdf2.pdf_to_txt(filename)
                 if text[0] == 0:
@@ -173,7 +173,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
                 article = scraped_data.read()
                 self.inputTextField.setText(article)
             elif filename.endswith('.docx'):
-                text = docsImage.docx_to_text(filename, images_folder='./images/')
+                text = docsImage.docx_to_text(filename)
                 if text[0] == 0:
                     self.errorLabel.setText("There are pages which only contain image")
                     self.inputTextField.setText(text[1])
