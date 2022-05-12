@@ -1,9 +1,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import QFileInfo
 from PyQt5.QtGui import QIcon
 from PyQt5.QtPrintSupport import QPrinter
 from PyQt5.QtWidgets import QFileDialog
-from PyQt5.QtCore import QFileInfo
-import file_conversions, summary_algo
+
+import file_conversions
+import summary_algo
 
 
 class Ui_MainWindow(QtWidgets.QMainWindow):
