@@ -172,10 +172,17 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
                 article = scraped_data.read()
                 self.inputTextField.setText(article)
             elif filename.endswith('.docx'):
-                text = file_conversions.getText(filename)
-                self.inputTextField.setText(text)
+                text = file_conversions.docx_to_text(filename)
+                if text[0] == 0:
+                    self.errorLabel.setText("There are pages which only contain image")
+                    self.inputTextField.setText(text[1])
+                elif text[0] == 1:
+                    self.errorLabel.setText("Unsupported file")
+                else:
+                    self.inputTextField.setText(text[0])
+                    self.errorLabel.setText("")
             else:
-                self.outputTextField.setText("Invalid file type")
+                self.outputTextField.setText("Invalid File!! Try Another File")
 
     def convertText(self):
         if self.inputTextField.toPlainText() == '':
