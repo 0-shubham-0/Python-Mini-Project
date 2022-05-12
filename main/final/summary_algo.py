@@ -15,11 +15,7 @@ def summaryText(text, length_percent):
     formatted_article_text = re.sub('[^a-zA-Z]', ' ', article_text)
     formatted_article_text = re.sub(r'\s+', ' ', formatted_article_text)
     sentence_list = nltk.sent_tokenize(article_text)
-    # output_sentence = 0
-    # output_sentence == len(sentence_list)/2
-    # if  percent == 50:
 
-    # nltk.download("stopwords")
     stopwords_o = nltk.corpus.stopwords.words('english')
     # print(sentence_list)
     # # print(stopwords_o)

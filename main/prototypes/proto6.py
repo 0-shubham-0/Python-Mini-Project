@@ -4,7 +4,7 @@ from PyQt5.QtPrintSupport import QPrinter
 from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtCore import QFileInfo
 from main.prototypes import pdf2, python2
-
+import doc
 
 class Ui_MainWindow(QtWidgets.QMainWindow):
     def setupUi(self, MainWindow):
@@ -155,25 +155,26 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         )
         if filename:
             print(filename)
-            if filename.endswith('.pdf'):
-                text = pdf2.pdf_to_txt(filename)
-                if text[0] == 0:
-                    self.errorLabel.setText("There are pages which only contain image")
-                    self.inputTextField.setText(text[1])
-                elif text[0] == 1:
-                    self.errorLabel.setText("Unsupported file")
-                else:
-                    self.inputTextField.setText(text[0])
-                    self.errorLabel.setText("")
-            elif filename.endswith('.txt'):
-                scraped_data = open(filename, 'r')
-                article = scraped_data.read()
-                self.inputTextField.setText(article)
-            elif filename.endswith('.docx'):
-                text = pdf2.getText(filename)
-                self.inputTextField.setText(text)
-            else:
-                self.outputTextField.setText("Invalid file type")
+            doc.doc(filename)
+            # if filename.endswith('.pdf'):
+            #     text = pdf2.pdf_to_txt(filename)
+            #     if text[0] == 0:
+            #         self.errorLabel.setText("There are pages which only contain image")
+            #         self.inputTextField.setText(text[1])
+            #     elif text[0] == 1:
+            #         self.errorLabel.setText("Unsupported file")
+            #     else:
+            #         self.inputTextField.setText(text[0])
+            #         self.errorLabel.setText("")
+            # elif filename.endswith('.txt'):
+            #     scraped_data = open(filename, 'r')
+            #     article = scraped_data.read()
+            #     self.inputTextField.setText(article)
+            # elif filename.endswith('.docx'):
+            #     text = pdf2.getText(filename)
+            #     self.inputTextField.setText(text)
+            # else:
+            #     self.outputTextField.setText("Invalid file type")
 
     def convertText(self):
         if self.inputTextField.toPlainText() == '':
