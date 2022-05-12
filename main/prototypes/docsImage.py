@@ -1,24 +1,35 @@
 import docx
 import docx2txt as dt
-
+import os
+import glob
 
 def getText(filename):
-
     doc = docx.Document(filename)
     fullText = []
     for para in doc.paragraphs:
         fullText.append(para.text)
     return '\n'.join(fullText)
 
+
 def docx_to_text(path_to_file, images_folder, get_text=True):
-
     text = dt.process(path_to_file, images_folder)
-
+    dir = os.listdir(images_folder)
     if get_text:
-        print(text)
+        if len(dir) == 0:
+            print("Empty directory")
+            return [text]
+        else:
+            print("Not empty directory")
+            files = glob.glob(images_folder)
+            for f in files:
+                os.remove(f)
+            return [0, text]  # Images exist
+    else:
+        return [1]  # Some error
 
 
 path_to_file = 'Python Mini Project - REPORT.docx'
 images_folder = './images/'
+print(images_folder)
 
 docx_to_text(path_to_file, images_folder)
