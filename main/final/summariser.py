@@ -216,6 +216,9 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
                 printer.setOutputFileName(fn)
                 self.outputTextField.document().print_(printer)
 
+                self.inputTextField.setText("")
+                self.outputTextField.setText("")
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         icon = QIcon('icon.png')
