@@ -217,7 +217,6 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
                 self.outputTextField.document().print_(printer)
 
                 self.inputTextField.setText("")
-                self.outputTextField.setText("")
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -227,7 +226,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.open_pdf.setText(_translate("MainWindow", "Select \nPDF/TXT/DOCX"))
         self.orLabel.setText(_translate("MainWindow", "OR"))
         self.exportPDFbutton.setText(_translate("MainWindow", "Export PDF"))
-        self.convertButton.setText(_translate("MainWindow", "CONVERT"))
+        self.convertButton.setText(_translate("MainWindow", "SUMMARIZE"))
         self.summaryLength.setItemText(0, _translate("MainWindow", "30%"))
         self.summaryLength.setItemText(1, _translate("MainWindow", "50%"))
         self.summaryLength.setItemText(2, _translate("MainWindow", "70%"))
