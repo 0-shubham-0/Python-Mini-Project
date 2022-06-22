@@ -172,10 +172,17 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
                 article = scraped_data.read()
                 self.inputTextField.setText(article)
             elif filename.endswith('.docx'):
-                text = file_conversions.getText(filename)
-                self.inputTextField.setText(text)
+                text = file_conversions.docx_to_text(filename)
+                if text[0] == 0:
+                    self.errorLabel.setText("There are pages which only contain image")
+                    self.inputTextField.setText(text[1])
+                elif text[0] == 1:
+                    self.errorLabel.setText("Unsupported file")
+                else:
+                    self.inputTextField.setText(text[0])
+                    self.errorLabel.setText("")
             else:
-                self.outputTextField.setText("Invalid file type")
+                self.outputTextField.setText("Invalid File!! Try Another File")
 
     def convertText(self):
         if self.inputTextField.toPlainText() == '':
@@ -209,6 +216,8 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
                 printer.setOutputFileName(fn)
                 self.outputTextField.document().print_(printer)
 
+                self.inputTextField.setText("")
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         icon = QIcon('icon.png')
@@ -217,7 +226,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.open_pdf.setText(_translate("MainWindow", "Select \nPDF/TXT/DOCX"))
         self.orLabel.setText(_translate("MainWindow", "OR"))
         self.exportPDFbutton.setText(_translate("MainWindow", "Export PDF"))
-        self.convertButton.setText(_translate("MainWindow", "CONVERT"))
+        self.convertButton.setText(_translate("MainWindow", "SUMMARIZE"))
         self.summaryLength.setItemText(0, _translate("MainWindow", "30%"))
         self.summaryLength.setItemText(1, _translate("MainWindow", "50%"))
         self.summaryLength.setItemText(2, _translate("MainWindow", "70%"))
