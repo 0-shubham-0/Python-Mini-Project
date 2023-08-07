@@ -44,5 +44,3 @@ To use the project, follow these steps:
 - [Building an Extractive Text Summarizer with GUI using Python and NLTK - Medium](#)
 
 Please refer to the provided references for more detailed information on the implementation of the project.
-
-*Note: The specific implementation details may vary depending on the code and approach used in the project.*
